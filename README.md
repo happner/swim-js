@@ -22,8 +22,6 @@ npm install happn-swim --save
 var Swim = require('happn-swim');
 var opts = {
     local: {
-        // restarting members should resume incarnation sequence (or 0)
-        incarnation: previousIncarnation + 1,
         host: '10.31.1.191:11000',
         meta: {'application': 'info'} // optional
     },
@@ -53,9 +51,7 @@ swim.bootstrap(hostsToJoin, function onBootstrap(err) {
     swim.on(Swim.EventType.Change, function onChange(update) {});
     
     // update on membership, e.g. node recovered or update on meta data
-    swim.on(Swim.EventType.Update, function onUpdate(update) {
-      // if self and incarnation increased, save it (previousIncarnation)
-    });
+    swim.on(Swim.EventType.Update, function onUpdate(update) {});
 
     // shutdown
     swim.leave();
